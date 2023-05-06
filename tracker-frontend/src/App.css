@@ -6,13 +6,82 @@
   height: 40vmin;
   pointer-events: none;
 }
-
+.version
+{
+  font-size: 0.3em;
+  color :red; 
+}
+.nav1 {
+  border: solid orange 2px;
+  border-radius: 20px;
+  color: white;
+  background-color: red;
+  text-decoration: none;
+  padding: 10px;
+}
+.nav2 {
+  background-color: greenyellow!important;
+  color: black !important;
+}
+nav {
+  text-align: center;
+  margin: 20px;
+}
+.nav1:hover {
+  background-color: yellow;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+.center{
+  margin-top: 10px;
+  text-align: center;
+}
+.general-border{
+  border:blue solid 5px;
+  border-radius: 10px;
+  padding: 5px;
+}
+.list-border{
+  border:black solid 1px;
+  border-radius: 10px;
+  padding: 5px;
+}
+.control-inline
+{
+  display: inline-block !important;
+  width:70px !important;
+}
+.control-block-label
+{
+  display: block !important;
+}
+.logo {
+  width:50px;
+  height:50px;
+}
+.right
+{
+  text-align: right;;
+}
+.topParag
+{
+  margin-top: 16px !important;
+}
+.gap {
+  margin-right: 5px;
+}
+.control-block
+{
+  width:50px !important;
+}
+.control-dot
+{
+  display: inline-block !important;
+  width:5px !important;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -35,4 +104,14 @@
   to {
     transform: rotate(360deg);
   }
+}
+.datePicker
+{
+  width:100px;
+  color:rgb(18, 51, 24);
+  background-color: rgb(10, 236, 240);
+}
+.messageArea{
+  background-color: #61dafb;
+  color: grey;
 }

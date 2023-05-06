@@ -1,25 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import Main from './main/Main';
+import About from './main/About';
+import React, { createContext } from 'react';
+
+import {  BrowserRouter,  NavLink, Routes,  Route} from "react-router-dom";
+
+export const prjContext = createContext('');
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+    <BrowserRouter>
+    <prjContext.Provider value = '[Sherif]'>
+      <nav>
+        <NavLink className ="nav1" to="/">Home</NavLink>
+        <NavLink className ="nav1 nav2" to="/DALIA/love">About</NavLink>
+      </nav>
+      <Routes>
+        
+          <Route path="" element={<Main />} />
+          <Route path="/dalia/love" element={<About />} />
+      </Routes>
+      </prjContext.Provider>
+    </BrowserRouter>
   );
 }
-
 export default App;
