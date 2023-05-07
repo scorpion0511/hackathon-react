@@ -25,7 +25,7 @@ useEffect(() => {
 
       const clearSelection = () =>
       {
-        setSelectedRowHighlighted('');
+        setSelectedRowHighlighted(-1);
       }
 
       const listView = () =>
@@ -116,7 +116,7 @@ const save = (e) => {
   const week = props.week;
   const id = weekId !== "undefined" ? weekId : 0;
 
-  return fetch("http://localhost:8081/tracker/api/save", {
+  return fetch("http://localhost:8500/tracker/api/save", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -147,7 +147,7 @@ const save = (e) => {
           alert("Please, Enter Date");
           return;
         }
-        fetch(`http://localhost:8081/tracker/api/get?week=${props.week}`, {
+        fetch(`http://localhost:8500/tracker/api/get?week=${props.week}`, {
           method: "GET",
           headers: {
             accept: "application/json",
@@ -182,16 +182,7 @@ const updateMatchingRow = () =>
        }
        return newTasks;
    }
-  //  const copy = (task) =>
-  //  {
-  //     const copy = {};
-  //     copy.name =  task.name;
-  //     copy.hour = task.hour;
-  //     copy.min = task.min;
-  //     copy.comment = task.comment;
-  //     copy.myKey = task.myKey === 0 ? Date.now() : task.myKey;
-  //     return copy;
-  //  }  
+
    const copy = (task) =>
    {
      const copy = {...task};
@@ -203,7 +194,6 @@ const updateMatchingRow = () =>
     save(event)
     .then(data => 
       {
-        console.log('dd');
         clear();
       });
    }
@@ -225,6 +215,7 @@ const updateMatchingRow = () =>
      setTasks([]);
      setWeekId(0);
      props.clearBoundedElements();
+     setSelectedRowHighlighted(-1);
    }
  
   return (

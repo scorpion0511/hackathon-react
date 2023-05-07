@@ -33,6 +33,7 @@ const Main = () => {
      setTask(newTask);
      clearButtonRef.current.click();
      setName('');
+     setIncluded(true);
    }
   }
   const clearBoundedElements = () =>
