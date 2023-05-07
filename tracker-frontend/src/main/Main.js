@@ -121,7 +121,8 @@ const Main = () => {
                     selected={selectedDate} 
                     onChange={date => handleDateChange(date)}/>
                   </Form.Group>
-              
+              <Row>
+                <Col>
                <Form.Group  className= "taskName" controlId="formTaskName">
                      <Form.Label>Task Name</Form.Label>
                      <Form.Control type="text"
@@ -129,14 +130,15 @@ const Main = () => {
                         onChange={handleNameChange} 
                         placeholder="Enter name or #" />
                 </Form.Group>
-
+                </Col><Col>
                 <Form.Group  controlId="formTaskInclude">
+                <Form.Label>Task Counted</Form.Label>
                      <Form.Control className="includeCheckBox" type="checkbox"
                         checked = {included}
                         onChange={handleIncludeChange} 
                      />
-                </Form.Group>
-
+                </Form.Group></Col>
+                </Row>
                 <Form.Group controlId="formTaskHour" className="control-inline">
                     <Form.Label className="control-block-label">Hour:Min</Form.Label>
                     <Form.Control 
