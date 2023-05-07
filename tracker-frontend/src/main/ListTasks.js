@@ -11,7 +11,6 @@ const ListTasks = (props) => {
 const [tasks, setTasks] = useState([]);
 const [message, setMessage] = useState('');
 const [weekId, setWeekId] = useState(0);
-const [remoteApp, setRemoteApp] = useState('');
 const [selectedRowHighlighted, setSelectedRowHighlighted] = useState('');
 
 
@@ -28,11 +27,96 @@ useEffect(() => {
       {
         setSelectedRowHighlighted('');
       }
+
+      const listView = () =>
+      {
+        let display = '';
+         const myTasks = aggregateTasks();
+         myTasks.forEach(element => {
+          if (element.hour > 0)
+          {
+              display += element.name + ": " + element.hour.toFixed(2) + "\n";
+          }
+          else
+          {
+            display += element.name + ": 0." + element.min + "\n";
+          }
+         });
+         alert(display);
+      }
+
+      const aggregateTasks = () =>
+      {
+        const aggregatedArray = [];
+    
+        tasks.forEach(item => {
+        const index = aggregatedArray.findIndex(x => x.name.toUpperCase() === item.name.toUpperCase());
+        if (item.name.length > 0)
+        {
+          let hr = parseInt(item.hour);
+          const mn = parseInt(item.min);
+    
+            if (index === -1) 
+            {
+              aggregatedArray.push({ name: item.name, hour: hr + mn/60, min: 0 });
+            } 
+            else 
+            {
+              aggregatedArray[index].min  = aggregatedArray[index].min + mn;
+              aggregatedArray[index].hour  = aggregatedArray[index].hour + hr + aggregatedArray[index].min/60;
+              aggregatedArray[index].min = 0;
+            }
+        }
+      });
+      return aggregatedArray;
+      }
+      const calculateHour = (myTasks) =>
+      {
+        const sum = myTasks.reduce((accumulator , currentValue) => 
+        {
+            const value = Boolean(currentValue.included) === true ? parseInt(currentValue.hour) : 0 ;
+            if (isNaN(value)) 
+            {
+              return accumulator;
+            } 
+            else
+            {
+              return accumulator + value;
+            }
+        }, 0);
+        return sum;
+      }
+      const calculateMin = (myTasks) =>
+      {
+        const sum = myTasks.reduce((accumulator , currentValue) => 
+        {
+            const value = Boolean(currentValue.included) === true ? parseInt(currentValue.min) : 0 ;
+            if (isNaN(value)) 
+            {
+              return accumulator;
+            } 
+            else
+            {
+              return accumulator + value;
+            }
+        }, 0);
+        return sum;
+      }
+      const calculateAndDisplay = () =>
+      {
+          alert(calculate(tasks));
+      }
+      const calculate = (myTasks) =>
+      {
+          const minToHours = calculateMin(myTasks) / 60 ;
+          const hours = calculateHour(myTasks) + minToHours;
+          return(hours.toFixed(2) + ' Hours');
+      }
 const save = (e) => {
   const week = props.week;
   const id = weekId !== "undefined" ? weekId : 0;
 
-  return fetch("http://localhost:8500/tracker/api/save", {
+  return fetch("http://localhost:8081/tracker/api/save", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -63,7 +147,7 @@ const save = (e) => {
           alert("Please, Enter Date");
           return;
         }
-        fetch(`http://localhost:8500/tracker/api/get?week=${props.week}`, {
+        fetch(`http://localhost:8081/tracker/api/get?week=${props.week}`, {
           method: "GET",
           headers: {
             accept: "application/json",
@@ -85,7 +169,7 @@ const updateMatchingRow = () =>
        let newTasks = [...tasks];
        let foundIt = false;
        for (let i = 0; i < tasks.length; i++) {
-         if (newTasks[i].name.toUpperCase() == props.task.name.toUpperCase()) 
+         if (newTasks[i].name.toUpperCase() == props.task.name.toUpperCase() && newTasks[i].myKey == props.task.myKey && props.task.myKey !==0) 
          {
             newTasks[i] = copy(props.task);
             foundIt = true;
@@ -169,13 +253,13 @@ const updateMatchingRow = () =>
       </div>
       <Row className='App'>
        <Col>
-      <Button className="text-uppercase btn-outline-success  btn-sm gap"  variant='none' >
+       <Button className="text-uppercase btn-outline-success  btn-sm gap"  variant='none' onClick={calculateAndDisplay}>
             calculate
       </Button>
       </Col>
       
       <Col>
-      <Button className="text-uppercase btn-outline-success  btn-sm gap"  variant='none' >
+      <Button className="text-uppercase btn-outline-success  btn-sm gap"  variant='none' onClick={listView}>
             list
       </Button>
       </Col>

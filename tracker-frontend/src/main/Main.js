@@ -17,12 +17,11 @@ import { prjContext } from '../App';
 const Main = () => {
   const [selectedDate, setSelectedDate] = useState('');
   const [name, setName] = useState('');
+  const [included, setIncluded] = useState(true);
   const [week, setWeek] = useState('');
-  const [task, setTask] = useState({name:'',hour:0,min:0,comment:'',myKey:0});
+  const [task, setTask] = useState({id:null, name:'',hour:0,min:0,comment:'',myKey:0, included:true});
   
   const clearButtonRef = useRef(null);
-
-  
 
   const update = (event) =>
   {
@@ -40,19 +39,26 @@ const Main = () => {
   {
      setSelectedDate('');
      setName('');
+     setIncluded(true);
   }
   const handleNameChange = (event) =>
   {
     setName(event.target.value);
   }
+  const handleIncludeChange = (event) =>
+  {
+    setIncluded(!included);
+  }
   const updateValues = (event)=>
   {
-    const task = {name:'',hour:0,min:0,comment:'',myKey:0};
-    task.name = name;
-    task.hour = event.target.formTaskHour.value;
-    task.min = event.target.formTaskMin.value;
-    task.comment = event.target.formTaskComment.value;
-    return task;
+    const newTask = {...task};
+    newTask.name = name;
+    newTask.hour = event.target.formTaskHour.value;
+    newTask.min = event.target.formTaskMin.value;
+    newTask.comment = event.target.formTaskComment.value;
+    newTask.myKey = task.myKey;
+    newTask.included = included;
+    return newTask;
   }
   const populate = (data) => 
   {
@@ -61,6 +67,7 @@ const Main = () => {
     $('#formTaskMin').val(data.min);
     $('#formTaskComment').val(data.comment);
     task.myKey = data.myKey; 
+    setIncluded(data.included);
   }
   
   const validate = (task) =>
@@ -115,12 +122,19 @@ const Main = () => {
                     onChange={date => handleDateChange(date)}/>
                   </Form.Group>
               
-               <Form.Group  controlId="formTaskName">
+               <Form.Group  className= "taskName" controlId="formTaskName">
                      <Form.Label>Task Name</Form.Label>
                      <Form.Control type="text"
                         value = {name}
                         onChange={handleNameChange} 
                         placeholder="Enter name or #" />
+                </Form.Group>
+
+                <Form.Group  controlId="formTaskInclude">
+                     <Form.Control className="includeCheckBox" type="checkbox"
+                        checked = {included}
+                        onChange={handleIncludeChange} 
+                     />
                 </Form.Group>
 
                 <Form.Group controlId="formTaskHour" className="control-inline">

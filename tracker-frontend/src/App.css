@@ -115,3 +115,13 @@ nav {
   background-color: #61dafb;
   color: grey;
 }
+.includeCheckBox
+{
+  width:30px !important;
+  height: 30px !important;
+  appearance: checkbox !important;
+}
+.taskName
+{
+  width:300px;
+}
