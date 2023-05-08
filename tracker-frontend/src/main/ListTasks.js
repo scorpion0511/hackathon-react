@@ -214,7 +214,7 @@ const updateMatchingRow = () =>
      props.clearButtonRef.current.click();
      setTasks([]);
      setWeekId(0);
-     props.clearBoundedElements();
+     props.clearAll();
      setSelectedRowHighlighted(-1);
    }
  

@@ -16,7 +16,7 @@ import { prjContext } from '../App';
 
 const Main = () => {
   const [selectedDate, setSelectedDate] = useState('');
-  const [name, setName] = useState('');
+  const [key, setKey] = useState(0);
   const [included, setIncluded] = useState(true);
   const [week, setWeek] = useState('');
   const [task, setTask] = useState({id:null, name:'',hour:0,min:0,comment:'',myKey:0, included:true});
@@ -32,19 +32,7 @@ const Main = () => {
    { 
      setTask(newTask);
      clearButtonRef.current.click();
-     setName('');
-     setIncluded(true);
    }
-  }
-  const clearBoundedElements = () =>
-  {
-     setSelectedDate('');
-     setName('');
-     setIncluded(true);
-  }
-  const handleNameChange = (event) =>
-  {
-    setName(event.target.value);
   }
   const handleIncludeChange = (event) =>
   {
@@ -53,24 +41,39 @@ const Main = () => {
   const updateValues = (event)=>
   {
     const newTask = {...task};
-    newTask.name = name;
+    newTask.name = event.target.formTaskName.value;
     newTask.hour = event.target.formTaskHour.value;
     newTask.min = event.target.formTaskMin.value;
     newTask.comment = event.target.formTaskComment.value;
-    newTask.myKey = task.myKey;
+    newTask.myKey = key;
     newTask.included = included;
     return newTask;
   }
   const populate = (data) => 
   {
-    setName(data.name);
+    $('#formTaskName').val(data.name);
     $('#formTaskHour').val(data.hour);
     $('#formTaskMin').val(data.min);
     $('#formTaskComment').val(data.comment);
-    task.myKey = data.myKey; 
+    setKey(data.myKey); 
     setIncluded(data.included);
   }
-  
+
+  const clearAll = () =>
+  {
+    clearElements();
+    setSelectedDate('');
+  }
+  const clearElements = () =>
+  {
+    $('#formTaskName').val('');
+    $('#formTaskHour').val(0);
+    $('#formTaskMin').val(0);
+    $('#formTaskComment').val('');
+    setKey(0);
+    setIncluded(true);
+  }
+
   const validate = (task) =>
   {
     let result = true;
@@ -127,8 +130,6 @@ const Main = () => {
                <Form.Group  className= "taskName" controlId="formTaskName">
                      <Form.Label>Task Name</Form.Label>
                      <Form.Control type="text"
-                        value = {name}
-                        onChange={handleNameChange} 
                         placeholder="Enter name or #" />
                 </Form.Group>
                 </Col><Col>
@@ -173,7 +174,7 @@ const Main = () => {
               <Button type = "submit" className="text-uppercase  btn-outline-danger gap" variant='none' >
               add/update
             </Button>
-            <Button ref={clearButtonRef} type = "reset" className="text-uppercase  btn-outline-warning" variant='none'  >
+            <Button ref={clearButtonRef} type = "reset" className="text-uppercase  btn-outline-warning" variant='none'  onClick={clearElements}>
               clear
             </Button>
             </div>
@@ -182,7 +183,7 @@ const Main = () => {
 
           </Col>
           <Col>
-              <ListTasks className = "list-border"  week= {week} clearButtonRef={clearButtonRef} task={task} clearBoundedElements={clearBoundedElements} populate={populate}
+              <ListTasks className = "list-border"  clearAll= {clearAll} week= {week} clearButtonRef={clearButtonRef} task={task} populate={populate}
               />
           </Col>
         </Row>
