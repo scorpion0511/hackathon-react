@@ -53,8 +53,8 @@ useEffect(() => {
         const index = aggregatedArray.findIndex(x => x.name.toUpperCase() === item.name.toUpperCase());
         if (item.name.length > 0)
         {
-          let hr = parseInt(item.hour);
-          const mn = parseInt(item.min);
+          let hr = isNaN(parseInt(item.hour)) ? 0 : parseInt(item.hour);
+          const mn = isNaN(parseInt(item.min)) ? 0 : parseInt(item.min);
     
             if (index === -1) 
             {
