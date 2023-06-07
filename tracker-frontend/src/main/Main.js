@@ -10,9 +10,10 @@ import Form from 'react-bootstrap/Form';
 import {useState, useRef, useContext} from 'react';
 import Button from 'react-bootstrap/Button';
 import moment from "moment";
-import $ from 'jquery';
-import { properties } from './messageProperties';
+import $ from 'jquery'; 
+import i18n from '../lang/i18n'
 import { prjContext } from '../App';
+import LanguageSelect from '../commoncomponents/LanguageSelect';
 
 const Main = () => {
   const [selectedDate, setSelectedDate] = useState('');
@@ -23,6 +24,7 @@ const Main = () => {
   
   const clearButtonRef = useRef(null);
 
+  
   const update = (event) =>
   {
     //prevent page reload
@@ -38,6 +40,8 @@ const Main = () => {
   {
     setIncluded(!included);
   }
+
+
   const updateValues = (event)=>
   {
     const newTask = {...task};
@@ -76,24 +80,24 @@ const Main = () => {
 
   const validate = (task) =>
   {
-    let result = true;
-    let error = properties.missingInfo;
+    let result = true; 
+    let error = i18n.t("missingInfo", {ns: "message"});
     if (task.name.trim() === '') 
     {
       result = false;
-      error += properties.missingName;
+      error += i18n.t('missingName', {ns: "message"});
     }
     
     if (task.hour === '0' && task.min === '0') 
     {
       result = false;
-      error += properties.missingTime;
+      error += i18n.t('missingTime', {ns: "message"});
     }
     
     if (selectedDate === '') 
     {
       result = false;
-      error += properties.missingDate;
+      error += i18n.t('missingDate', {ns: "message"});
     } 
     if (!result)
     {
@@ -101,6 +105,7 @@ const Main = () => {
     }
     return result;
   }
+
     const handleDateChange = (date) => {
     
         const startOfWeek = moment(date).startOf('isoWeek');
@@ -117,10 +122,15 @@ const Main = () => {
         
         <Header version = {'1.0' + identifer} className='general-border' />
         <Row>
+
+        
           <Col>
+
+            <LanguageSelect/>          
+
               <Form onSubmit={update} >
                   <Form.Group>
-                    <Form.Label>Pick Date</Form.Label> 
+                    <Form.Label>{i18n.t("PickDate", {ns:"label"})}</Form.Label> 
                     <DatePicker className='datePicker' 
                     selected={selectedDate} 
                     onChange={date => handleDateChange(date)}/>
@@ -128,13 +138,13 @@ const Main = () => {
               <Row>
                 <Col>
                <Form.Group  className= "taskName" controlId="formTaskName">
-                     <Form.Label>Task Name</Form.Label>
+                     <Form.Label>{i18n.t("TaskName", {ns:"label"})}</Form.Label>
                      <Form.Control type="text"
-                        placeholder="Enter name or #" />
+                        placeholder={i18n.t("enterName", {ns:"label"})} />
                 </Form.Group>
                 </Col><Col>
                 <Form.Group  controlId="formTaskInclude">
-                <Form.Label>Task Counted</Form.Label>
+                <Form.Label>{i18n.t("TaskCounted", {ns:"label"})}</Form.Label>
                      <Form.Control className="includeCheckBox" type="checkbox"
                         checked = {included}
                         onChange={handleIncludeChange} 
@@ -142,7 +152,7 @@ const Main = () => {
                 </Form.Group></Col>
                 </Row>
                 <Form.Group controlId="formTaskHour" className="control-inline">
-                    <Form.Label className="control-block-label">Hour:Min</Form.Label>
+                    <Form.Label className="control-block-label">{i18n.t("Hour", {ns:"label"})}</Form.Label>
                     <Form.Control 
                       type="number"
                       step="1"
@@ -153,7 +163,7 @@ const Main = () => {
                   </Form.Group>
 
                   <Form.Group controlId="formTaskMin" className="control-inline">
-                    <Form.Label className="control-dot">:</Form.Label>
+                    <Form.Label className="control-dot">{i18n.t("Minute", {ns:"label"})}</Form.Label>
                     <Form.Control 
                       type="number"
                       step="1"
@@ -163,19 +173,19 @@ const Main = () => {
                    defaultValue = '0' />
               </Form.Group>
               <Form.Group  controlId="formTaskComment">
-                    <Form.Label>Comment</Form.Label>
+                    <Form.Label>{i18n.t("Comment", {ns:"label"})}</Form.Label>
                     <Form.Control type="text"
-                    placeholder="Enter Comment" />
+                    placeholder={i18n.t("EnterComment", {ns: "label"})}/>
                     <Form.Text className="text-muted">
-                          You can write a short comment.
+                          {i18n.t("ShortComment", {ns: "label"})}
                     </Form.Text>
               </Form.Group>
               <div className='general-border center'>
               <Button type = "submit" className="text-uppercase  btn-outline-danger gap" variant='none' >
-              add/update
+              {i18n.t("addUpdate", {ns: "label"})}
             </Button>
             <Button ref={clearButtonRef} type = "reset" className="text-uppercase  btn-outline-warning" variant='none'  onClick={clearElements}>
-              clear
+            {i18n.t("clear", {ns: "label"})}
             </Button>
             </div>
 

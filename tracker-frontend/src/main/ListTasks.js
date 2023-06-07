@@ -5,14 +5,13 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col'; 
 import { useEffect, useState } from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
-import { properties } from './messageProperties';
+import i18n from '../lang/i18n';
 
 const ListTasks = (props) => {
 const [tasks, setTasks] = useState([]);
 const [message, setMessage] = useState('');
 const [weekId, setWeekId] = useState(0);
 const [selectedRowHighlighted, setSelectedRowHighlighted] = useState('');
-
 
 useEffect(() => {
       if (props.week.trim().length > 0)
@@ -204,7 +203,7 @@ const updateMatchingRow = () =>
     }
    const setATimedMessage = (id) =>
    {
-    const msg = properties.savedData.replace("[0]", `[${id}]`);
+    const msg = i18n.t('savedData', {ns: "message"}).replace("[0]", `[${id}]`);
     setMessage(msg);
     setTimeout( () => {setMessage('');}, 3000);
    }
@@ -245,34 +244,34 @@ const updateMatchingRow = () =>
       <Row className='App'>
        <Col>
        <Button className="text-uppercase btn-outline-success  btn-sm gap"  variant='none' onClick={calculateAndDisplay}>
-            calculate
+            {i18n.t("calculate", {ns: "label"})}
       </Button>
       </Col>
       
       <Col>
       <Button className="text-uppercase btn-outline-success  btn-sm gap"  variant='none' onClick={listView}>
-            list
+      {i18n.t("list", {ns: "label"})}
       </Button>
       </Col>
       <Col>
       <Button className="text-uppercase  btn-outline-dark  btn-sm gap" variant='none' onClick={save} >
-              save
+      {i18n.t("save", {ns: "label"})}
             </Button>
             </Col>
       <Col>
        <Button className="text-uppercase btn-outline-danger  btn-sm gap"  variant='none' onClick={deleteRow}>
-            Remove
+       {i18n.t("remove", {ns: "label"})}
       </Button>
       </Col>
       <Col>
        <Button className="text-uppercase btn-outline-primary  btn-sm gap"  variant='none' onClick={close}>
-            close
+       {i18n.t("close", {ns: "label"})}
       </Button>
       </Col>
 
       <Col>
        <Button className="text-uppercase btn-outline-warning  btn-sm gap"  variant='none' onClick={load}>
-            load
+       {i18n.t("load", {ns: "label"})}
       </Button>
       </Col>
       </Row>

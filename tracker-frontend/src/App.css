@@ -125,3 +125,12 @@ nav {
 {
   width:300px;
 }
+.control 
+{
+  text-align: right;
+}
+.list
+{
+  background-color: burlywood;
+  border-radius: 15px;
+}

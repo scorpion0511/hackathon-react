@@ -2,25 +2,28 @@ import './App.css';
 import Main from './main/Main';
 import About from './main/About';
 import React, { createContext } from 'react';
+import { useTranslation} from "react-i18next";
+import i18n from './lang/i18n';
 
 import {  BrowserRouter,  NavLink, Routes,  Route} from "react-router-dom";
 
 export const prjContext = createContext('');
 
 function App() {
+  useTranslation();
 
   return (
 
     <BrowserRouter>
     <prjContext.Provider value = '[Sherif]'>
       <nav>
-        <NavLink className ="nav1" to="/">Home</NavLink>
-        <NavLink className ="nav1 nav2" to="/DALIA/love">About</NavLink>
+        <NavLink className ="nav1" to="/">{i18n.t("HOME", {ns:"label"})}</NavLink>
+        <NavLink className ="nav1 nav2" to="/about">{i18n.t("ABOUT", {ns:"label"})}</NavLink>
       </nav>
       <Routes>
         
           <Route path="" element={<Main />} />
-          <Route path="/dalia/love" element={<About />} />
+          <Route path="/about" element={<About />} />
       </Routes>
       </prjContext.Provider>
     </BrowserRouter>

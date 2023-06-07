@@ -1,0 +1,23 @@
+{
+    "PickDate": "Seleziona data",
+    "TaskName": "Nome del compito",
+    "TaskCounted":"Task Contati",
+    "Hour": "Oura",
+    "Minute":"Minuto",
+    "Comment": "Commento",
+    "ShortComment": "Puoi scrivere un commento breve.",
+    "list": "lista",
+    "calculate": "calcola",
+    "close": "chiudi",
+    "load": "carica",
+    "remove": "Rimuovi",
+    "save": "salva",
+    "addUpdate" : "aggiungi/aggiorna",
+    "clear" : "pulisci",
+    "EnterComment":"Inserisci un commento",
+    "TaskTracker": "Tracker delle Attività",
+    "enterName": "Inserisci un nome o #",
+    "HOME":"Home",
+    "ABOUT":"Informazioni",
+    "Version":"versione"
+    }
