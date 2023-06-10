@@ -11,7 +11,7 @@ import {useState, useRef, useContext} from 'react';
 import Button from 'react-bootstrap/Button';
 import moment from "moment";
 import $ from 'jquery'; 
-import i18n from '../lang/i18n'
+import i18n from "i18next";
 import { prjContext } from '../App';
 import LanguageSelect from '../commoncomponents/LanguageSelect';
 
@@ -125,7 +125,6 @@ const Main = () => {
 
         
           <Col>
-
             <LanguageSelect/>          
 
               <Form onSubmit={update} >

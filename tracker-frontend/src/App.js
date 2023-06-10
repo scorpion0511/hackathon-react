@@ -3,7 +3,7 @@ import Main from './main/Main';
 import About from './main/About';
 import React, { createContext } from 'react';
 import { useTranslation} from "react-i18next";
-import i18n from './lang/i18n';
+import i18n from "i18next";
 
 import {  BrowserRouter,  NavLink, Routes,  Route} from "react-router-dom";
 
