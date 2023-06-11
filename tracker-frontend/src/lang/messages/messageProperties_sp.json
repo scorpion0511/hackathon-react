@@ -1,0 +1,8 @@
+{
+  "main.MissingInfo": "Información faltante:",
+  "main.MissingName": " [Nombre de la Tarea]",
+  "main.MissingTime": " [Tiempo Transcurrido]",
+  "main.MissingDate": " [Fecha]",
+  "list.SavedData": "La semana con el ID {{0}} ha sido guardada"
+  
+}

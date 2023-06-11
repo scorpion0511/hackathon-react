@@ -1,0 +1,26 @@
+{
+    "main.PickDate":"Pick Date",
+    "main.TaskName":"TaskName",
+    "main.TaskCounted":"Task Counted",
+    "main.Hour":"Hour",
+    "main.Minute":"Minute",
+    "main.Comment":"Comment",
+    "main.ShortComment" : "You can write a short comment.",
+    "main.AddUpdate":"add/update",
+    "main.Clear":"clear",
+    "main.EnterComment":"Enter Comment",
+    "main.TaskTracker": "Task Tracker",
+    "main.EnterName":"Enter name or #",
+    "list.List":"list",
+    "list.Calculate":"calculate",
+    "list.Close":"close",
+    "list.Load":"load",
+    "list.Remove":"Remove",
+    "list.Save":"save",
+    "app.Home":"Home",
+    "app.About":"About",
+    "app.Miscellaneous":"Miscellaneous",
+    "header.Version":"Version"
+
+}
+

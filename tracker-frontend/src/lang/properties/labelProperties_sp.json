@@ -1,0 +1,25 @@
+{
+    "main.PickDate": "Seleccionar Fecha",
+    "main.TaskName": "Nombre de Tarea",
+    "main.TaskCounted": "Tareas Contadas",
+    "main.Hour": "Hora",
+    "main.Minute": "Minuto",
+    "main.Comment": "Comentario",
+    "main.ShortComment": "Puedes escribir un comentario breve.",
+    "main.AddUpdate": "Agregar/Actualizar",
+    "main.Clear": "Limpiar",
+    "main.EnterComment": "Ingresar Comentario",
+    "main.TaskTracker": "Seguimiento de Tareas",
+    "main.EnterName": "Ingresar nombre o #",
+    "list.List": "Lista",
+    "list.Calculate": "Calcular",
+    "list.Close": "Cerrar",
+    "list.Load": "Cargar",
+    "list.Remove": "Eliminar",
+    "list.Save": "Guardar",
+    "app.Home": "Inicio",
+    "app.About": "Acerca de",
+    "app.Miscellaneous": "Misceláneo",
+    "header.Version": "Versión"
+    
+    }

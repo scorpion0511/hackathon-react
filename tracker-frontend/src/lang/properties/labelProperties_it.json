@@ -1,0 +1,25 @@
+{
+    "main.PickDate": "Seleziona Data",
+    "main.TaskName": "Nome Attività",
+    "main.TaskCounted": "Attività Contate",
+    "main.Hour": "Ora",
+    "main.Minute": "Minuto",
+    "main.Comment": "Commento",
+    "main.ShortComment": "Puoi scrivere un commento breve.",
+    "main.AddUpdate": "Aggiungi/Aggiorna",
+    "main.Clear": "Pulisci",
+    "main.EnterComment": "Inserisci Commento",
+    "main.TaskTracker": "Monitoraggio Attività",
+    "main.EnterName": "Inserisci nome o #",
+    "list.List": "Elenco",
+    "list.Calculate": "Calcola",
+    "list.Close": "Chiudi",
+    "list.Load": "Carica",
+    "list.Remove": "Rimuovi",
+    "list.Save": "Salva",
+    "app.Home": "Home",
+    "app.About": "Informazioni",
+    "app.Miscellaneous": "Varie",
+    "header.Version": "Versione"
+    
+    }

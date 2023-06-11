@@ -1,0 +1,26 @@
+{
+    "main.PickDate": "اختر التاريخ",
+    "main.TaskName": "اسم المهمة",
+    "main.TaskCounted": "عدد المهام",
+    "main.Hour": "ساعة",
+    "main.Minute": "دقيقة",
+    "main.Comment": "تعليق",
+    "main.ShortComment": "يمكنك كتابة تعليق قصير.",
+    "main.AddUpdate": "إضافة/تحديث",
+    "main.Clear": "مسح",
+    "main.EnterComment": "أدخل التعليق",
+    "main.TaskTracker": "متابعة المهام",
+    "main.EnterName": "أدخل الاسم أو #",
+    "list.List": "قائمة",
+    "list.Calculate": "حساب",
+    "list.Close": "إغلاق",
+    "list.Load": "تحميل",
+    "list.Remove": "إزالة",
+    "list.Save": "حفظ",
+    "app.Home": "الصفحة الرئيسية",
+    "app.About": "حول",
+    "app.Miscellaneous": "متنوع",
+    "header.Version": "الإصدار"
+    
+
+}

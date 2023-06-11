@@ -201,9 +201,9 @@ const updateMatchingRow = () =>
       tasks.splice(selectedRowHighlighted, 1);
       setSelectedRowHighlighted(-1);
     }
-   const setATimedMessage = (id) =>
+   const setATimedMessage = (id) => 
    {
-    const msg = i18n.t('savedData', {ns: "message"}).replace("[0]", `[${id}]`);
+    const msg = i18n.t('message:list.SavedData',  { 0 : `<${id}>`});
     setMessage(msg);
     setTimeout( () => {setMessage('');}, 3000);
    }
@@ -244,34 +244,34 @@ const updateMatchingRow = () =>
       <Row className='App'>
        <Col>
        <Button className="text-uppercase btn-outline-success  btn-sm "  variant='none' onClick={calculateAndDisplay}>
-            {i18n.t("calculate", {ns: "label"})}
+            {i18n.t("list.Calculate", {ns: "label"})}
       </Button>
       </Col>
       
       <Col>
       <Button className="text-uppercase btn-outline-success  btn-sm "  variant='none' onClick={listView}>
-      {i18n.t("list", {ns: "label"})}
+      {i18n.t("list.List", {ns: "label"})}
       </Button>
       </Col>
       <Col>
       <Button className="text-uppercase  btn-outline-dark  btn-sm " variant='none' onClick={save} >
-      {i18n.t("save", {ns: "label"})}
+      {i18n.t("list.Save", {ns: "label"})}
             </Button>
             </Col>
       <Col>
        <Button className="text-uppercase btn-outline-danger  btn-sm "  variant='none' onClick={deleteRow}>
-       {i18n.t("remove", {ns: "label"})}
+       {i18n.t("list.Remove", {ns: "label"})}
       </Button>
       </Col>
       <Col>
        <Button className="text-uppercase btn-outline-primary  btn-sm "  variant='none' onClick={close}>
-       {i18n.t("close", {ns: "label"})}
+       {i18n.t("list.Close", {ns: "label"})}
       </Button>
       </Col>
 
       <Col>
        <Button className="text-uppercase btn-outline-warning  btn-sm "  variant='none' onClick={load}>
-       {i18n.t("load", {ns: "label"})}
+       {i18n.t("list.Load", {ns: "label"})}
       </Button>
       </Col>
       </Row>
