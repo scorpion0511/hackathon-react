@@ -1,4 +1,4 @@
-import i18n from "../lang/i18n";
+import i18n from "../main/lang/i18n";
 import $ from "jquery";
 const LanguageSelect = () =>
 {

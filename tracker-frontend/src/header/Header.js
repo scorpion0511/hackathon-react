@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Image from 'react-bootstrap/Image';
 import Row from 'react-bootstrap/Row'; 
 import Col from 'react-bootstrap/Col';
-import i18n from '../lang/i18n'
+import i18n from '../main/lang/i18n';
 
 const Header = (props) => {
   

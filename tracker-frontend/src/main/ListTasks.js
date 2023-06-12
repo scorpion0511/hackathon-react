@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col'; 
 import { useEffect, useState } from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
-import i18n from "i18next";
+import i18n from './lang/i18n';
 
 const ListTasks = (props) => {
 const [tasks, setTasks] = useState([]);
