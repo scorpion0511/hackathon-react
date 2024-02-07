@@ -34,11 +34,12 @@ useEffect(() => {
          myTasks.forEach(element => {
           if (element.hour > 0)
           {
-              display += element.name + ": " + element.hour.toFixed(2) + "\n";
+              display += element.name + ": " + element.hour.toFixed(2) + (element.included.length > 0 ?  "***" : "") +"\n";
+            
           }
           else
           {
-            display += element.name + ": 0." + element.min + "\n";
+            display += element.name + ": 0." + element.min + (element.included.length > 0 ?  "***" : "") +"\n";
           }
          });
          alert(display);
@@ -57,7 +58,7 @@ useEffect(() => {
     
             if (index === -1) 
             {
-              aggregatedArray.push({ name: item.name, hour: hr + mn/60, min: 0 });
+              aggregatedArray.push({ name: item.name, hour: hr + mn/60, min: 0, included: Boolean(item.included) === true ? '' : '*'});
             } 
             else 
             {
