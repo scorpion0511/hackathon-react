@@ -216,7 +216,14 @@ const updateMatchingRow = () =>
      props.clearAll();
      setSelectedRowHighlighted(-1);
    }
- 
+  const getComment = (x) =>
+  {
+    if (x.comment.length > 0)
+    {
+      return ' [' + x.comment + ']';
+    }
+    return '';
+  }
   return (
   <Container className={props.className}>
     <div id="messageId" className='messageArea'>{message}</div>
@@ -236,7 +243,7 @@ const updateMatchingRow = () =>
 
           onClick={() => setSelectedRowHighlighted(index)} 
 
-          key={index}>{text.name}-{text.hour}:{text.min}[{text.comment}]
+          key={index}>{text.name}-{text.hour}:{text.min}{getComment(text)}
           </ListGroup.Item>
         ))}
       </ListGroup>
